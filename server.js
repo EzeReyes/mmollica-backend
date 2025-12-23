@@ -1,6 +1,7 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import cors from 'cors';
+import contactoRoutes from "./routes/contacto.js";
 
 dotenv.config();
 
@@ -15,9 +16,6 @@ app.use(cors({
   credentials: true
 }));
 
-import contactoRoutes from "./routes/contacto.js";
-
-app.use(express.json());
 app.use("/api/contacto", contactoRoutes);
 
 app.listen(PORT, () => {
