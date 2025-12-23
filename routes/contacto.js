@@ -11,6 +11,7 @@ router.post("/",
   validarCampos,
   async (req, res) => {
   const { nombre, apellido, email, mensaje, telefono } = req.body;
+  console.log(nombre, apellido, email, mensaje, telefono);
 
   try {
     await transporter.sendMail({
@@ -45,6 +46,7 @@ router.post("/",
     res.json({ ok: true, message: "Mensaje enviado correctamente" });
 
   } catch (error) {
+    console.log(error);
     console.error(error);
     res.status(500).json({
       ok: false,
