@@ -9,8 +9,8 @@ console.log("EMAIL_PASS:", process.env.EMAIL_PASS ? "OK" : "VACÍA");
 
 export const transporter = nodemailer.createTransport({
   host: "smtp.gmail.com",
-  port: 465,          // o 587
-  secure: true,       // true para 465, false para 587
+  port: 587,          // o 587
+  secure: false,       // true para 465, false para 587
   auth: {
     user: process.env.EMAIL_USER,
     pass: process.env.EMAIL_PASS
