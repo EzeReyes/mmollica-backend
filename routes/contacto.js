@@ -15,7 +15,7 @@ router.post("/", contactoValidator, validarCampos, async (req, res) => {
   try {
     // Enviar al administrador
     const { error: adminError } = await resend.emails.send({
-      from: "MM Mollica <ese.reyes1992.2@gmail.com>", // usa sandbox hasta verificar dominio
+      from: "MM Mollica <contacto@mmollica.com.ar>", // usa sandbox hasta verificar dominio
       to: "ese.reyes1992.2@gmail.com",
       subject: "Nuevo contacto desde la web",
       html: `<h3>Nuevo mensaje</h3>
@@ -31,7 +31,7 @@ router.post("/", contactoValidator, validarCampos, async (req, res) => {
 
     // Respuesta automática al cliente
     const { error: clientError } = await resend.emails.send({
-      from: "Acme <onboarding@resend.dev>", // igual, sandbox
+      from: "MM Mollica <contacto@mmollica.com.ar>", // usa sandbox hasta verificar dominio
       to: email,
       subject: "Hemos recibido su consulta",
       html: `<p>Hola ${nombre},</p>
