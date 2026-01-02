@@ -2,6 +2,24 @@ import express from "express";
 import { transporter } from "../config/mailer.js";
 import { contactoValidator } from "../validators/contactoValidator.js";
 import { validarCampos } from "../middlewares/validarCampos.js";
+import { Resend } from "resend";
+
+const resend = new Resend(process.env.RESEND);
+
+// (async function () {
+//   const { data, error } = await resend.emails.send({
+//     from: 'Acme <onboarding@resend.dev>',
+//     to: ['delivered@resend.dev'],
+//     subject: 'Hello World',
+//     html: '<strong>It works!</strong>',
+//   });
+
+//   if (error) {
+//     return console.error({ error });
+//   }
+
+//   console.log({ data });
+// })();
 
 const router = express.Router();
 
@@ -11,7 +29,7 @@ router.post("/", contactoValidator, validarCampos, async (req, res) => {
 
   try {
     // Enviar al administrador
-    await transporter.sendMail({
+    await resend.emails.send({
       from: `"Formulario Web" <${process.env.EMAIL_USER}>`,
       to: "ese.reyes1992@gmail.com", // tu mail real
       subject: "Nuevo contacto desde la web",
@@ -25,7 +43,7 @@ router.post("/", contactoValidator, validarCampos, async (req, res) => {
     });
 
     // Respuesta automática al cliente
-    await transporter.sendMail({
+    await resend.emails.send({
       from: `"MM Mollica" <${process.env.EMAIL_USER}>`,
       to: email,
       subject: "Hemos recibido su consulta",
