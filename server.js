@@ -2,9 +2,6 @@ import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
 import contactoRoutes from "./routes/contacto.js";
-import { Resend } from "resend";
-
-const resend = new Resend(process.env.RESEND);
 
 
 dotenv.config();

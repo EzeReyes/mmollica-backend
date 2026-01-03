@@ -16,7 +16,7 @@ router.post("/", contactoValidator, validarCampos, async (req, res) => {
     // Enviar al administrador
     const { error: adminError } = await resend.emails.send({
       from: "MM Mollica <contacto@mmollica.com.ar>", // usa sandbox hasta verificar dominio
-      to: "ese.reyes1992.2@gmail.com",
+      to: "ese.reyes1992@gmail.com",
       subject: "Nuevo contacto desde la web",
       html: `<h3>Nuevo mensaje</h3>
         <p><strong>Nombre:</strong> ${nombre}</p>
